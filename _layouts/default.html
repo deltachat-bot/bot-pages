@@ -14,7 +14,18 @@
 
     <div class="main-wrapper">
       <nav>
-        {%- include menu.html -%}
+        <ul class='menu'>
+        {%- for item in site.data.menu.links -%}
+          <li> 
+          {% if item.url == page.url %}
+            {{ item.title }}
+          {% else %}
+            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+
       </nav>
       <main class="page-content" aria-label="Content">
         {{ content }}
