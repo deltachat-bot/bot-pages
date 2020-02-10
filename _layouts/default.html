@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <img id='delta-chat-logo' src='/assets/logos/delta-chat.svg' alt='Delta Chat logo'>
+      <div id='site-name'>Delta Chat bots</div>
+    </header>
+
+    <div class="main-wrapper">
+      <nav>
+        {%- include menu.html -%}
+      </nav>
+      <main class="page-content" aria-label="Content">
+        {{ content }}
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>© 2020 Delta Chat contributors</p>
+    </footer>
+  </body>
+
+</html>

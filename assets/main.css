@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3em;
+  font-family: sans;
+  color: black;
+  background: white;
+}
+
+body {
+  max-width: 60rem;
+  padding: 2rem;
+}
+
+h1, h2, h3, h4 {
+  margin: 1.5em 0 0.5em 0;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+p, ul {
+  margin: 0 0 0.5rem 0;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+a {
+  color: darkblue;
+}
+
+footer {
+  margin-top: 5rem;
+  padding-top: 0.5rem;
+  border-top: solid thin lightgray;
+  font-size: 0.8rem;
+}
+footer * {
+  color: gray;
+}
+
+nav {
+  padding: 0.5rem 3rem 0 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.main-wrapper {
+  display: flex;
+  margin-top: 2rem;
+  min-height: 20rem;
+}
+
+.main-wrapper main {
+  flex: 10;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+header #site-name {
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: right;
+  color: #6C7D85;
+  padding-top: 0.5rem;
+}
+
+header #delta-chat-logo {
+  height: 5rem;
+  width: 5rem;
+}
