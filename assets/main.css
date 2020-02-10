@@ -52,6 +52,10 @@ nav ul {
   margin: 0;
 }
 
+nav ul li {
+  margin-bottom: 1rem;
+}
+
 nav a {
   color: black;
   text-decoration: none;
