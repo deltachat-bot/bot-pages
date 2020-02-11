@@ -4,11 +4,14 @@ title: Home
 
 # Delta Chat bots
 
-Welcome! 🤖
+Welcome, human! 🤖
+
+These pages describe Delta Chat bots, shows real life examples and gives helpful information for developing your own ones.
+
 
 ## What is it?
 
-Delta Chat bots are bridges into the world. They connect Delta Chat with general computing capabilities, mediated through emails. Often they connect to other chat protocols, or send and receive data to and from the web, but really there is no limit other than what a computer can do.
+Bots are Delta Chat's bridges into the rest of the world. They extend Delta Chat with functionality by using Delta Chat messages as input for scripts, and allowing scripts to send chat messages back to Delta Chat. Typically they connect to other chat protocols, or fetch data from the web, but really there is no limit other than what a computer can do.
 
 A Delta Chat bot only needs a running computer and a network connection. That might be a server in a data center, your laptop, a raspberry pi at home, or even a mobile phone at the camping ground. It does not need a publicly reachable IP-address or port, NATs are not an issue.
 
