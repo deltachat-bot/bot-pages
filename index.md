@@ -6,7 +6,7 @@ title: Home
 
 Welcome, human! 🤖
 
-These pages describe Delta Chat bots, shows real life examples and gives helpful information for developing your own ones.
+These pages describe Delta Chat bots, show real life examples and give helpful information for developing your own bots.
 
 
 ## What is it?
