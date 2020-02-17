@@ -29,5 +29,5 @@ Delta Chat Bots do not need a publicly reachable IP-address or port, NATs are no
 The bot doesn't even have to be connected all the time. It obviously can't read or send messages while offline, but it will resume doing so every time its connectivity is back.
 
 Read on:
-* [How to run a bot](howto.html)
+* [How to run a Delta Chat bot](howto.html)
 * [Developer information](development.html)
