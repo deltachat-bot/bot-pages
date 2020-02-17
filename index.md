@@ -30,4 +30,4 @@ The bot doesn't even have to be connected all the time. It obviously can't read 
 
 Read on:
 * [How to run a bot](howto.html)
-* [Developmer information](development.html)
+* [Developer information](development.html)

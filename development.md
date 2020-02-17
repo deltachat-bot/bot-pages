@@ -1,10 +1,16 @@
 ---
-title: Development information
+title: Developer information
 ---
 
-# Development information
+# Developer information
 
-To build your own Delta Chat bot is easy. Read on for some basic information and maybe have a look at our example bots. You may also copy and adapt them, if that suits you! They're mostly licensed under the GPL, which allows you to use the code, and also to change it as long as you re-publish your result (at least on request).
+Building your own Delta Chat bot is easy.
+Read on for some basic information and maybe have a look at our example bots.
+You may also copy and adapt them, if that suits you!
+
+They're mostly licensed under the GPL, which allows you to use the code, and also to change it as long as you re-publish your result (at least on request).
+
+## APIs you can use
 
 Delta Chat bots use deltachat-core-rust, the engine doing most of the work. Your job as bot author is to use the output of that engine, and to give it instructions. You won't parse any email message, check connections, or care for encryption, that's all the engines job.
 
