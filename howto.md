@@ -11,14 +11,12 @@ A bot runs on any computer.
 Any bot has a documentation about how to use it - you need to find this information.
 🚧 **TODO**: Where to find the bot's documentation?
 
-## Internet Connection
+## Internet Connection and Dependencies
 
 For running any Delta Chat bot, there is one basic requirement: That a network connection to your email provider is possible via IMAP and SMTP.
 
-## Install the Bot
-
-Next, checkout the documentation of the bot of your choice.
-You need an installation of the runtime (programming language) that the bot uses (e.g. Python or NodeJS), if you don't have that already.
+Next, you need an installation of the runtime (programming language) that the bot uses (e.g. Python or NodeJS), if you don't have that already.
+Check out the documentation of the bot of your choice, you should find the information there.
 
 ## Every Bot Needs an Email Address
 
