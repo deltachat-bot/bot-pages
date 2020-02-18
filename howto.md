@@ -1,16 +1,37 @@
 ---
-title: How to use them
+title: How to run a Delta Chat Bot
 ---
 
-# How to use
+# How to run a Delta Chat Bot
 
-For running any Delta Chat bot, there is one basic requirement: That a network connection to your email provider is possible via IMAP and SMTP.
+To run a Delta Chat bot you don't need to be a programmer or experienced sysadmin.
+Basically any computer will do, as long as it can connect to your email provider.
+For testing purposes that may well be your local machine. :)
 
-Next, checkout the documentation of the bot of your choice. You probably need an installation of the runtime that the bot uses (e.g. Python or NodeJS), but you might already have that.
 
-The bots documentation will tell you if there is anything else to prepare, and how to tell it about its email address and password. Remember: a Delta Chat bot is basically an special purpose email client.
+### Requirements
+The details depend on the bot of your choice.
+Please read its documentation (see below for links).
 
-Tip: choose an email provider that doesn't (or does only very liberally) filter, block or delay incoming or outgoing emails. With good email providers, messages reach the chat partners within a few seconds.
+In general you need:
+* a connection to the internet,
+* an installation of the programming language that the bot uses (e.g. Python or NodeJS),
+* and some additional software packages (don't be afraid, the installation won't be complicated).
+
+Some bots will have those dependencies packaged into a container image, then you need only the possibility to run a container (e.g. with docker or podman).
+
+### Configuration
+Each Delta Chat bot requires at least one email address and a password — after all a Delta Chat bot is basically just an special purpose email client.
+
+There might be additional preparations steps described in the bot's documentation, please don't forget to read it.
+
+Choose an email provider that doesn't (or does only very liberally) filter, block or delay incoming or outgoing emails. With good email providers, messages reach the chat partners within a few seconds, bad providers can cause long delays.
+{: .tip }
+
+### Running
+If you don't use a container image you'll start the bot by executing a command. In order to keep it running when you log out, maybe use a tool like [tmux](https://github.com/tmux/tmux/).
+
+## Bots
 
 🚧 **TODO**: Links with short descriptions to example bots once they're ready.
 
