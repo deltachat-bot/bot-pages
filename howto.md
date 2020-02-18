@@ -14,6 +14,7 @@ For our example bots, it is in the README.md in their respective [GitHub reposit
 ## Internet Connection and Dependencies
 
 For running any Delta Chat bot, there is one basic requirement: That a network connection to your email provider is possible via IMAP and SMTP.
+It doesn't need to be available from the Internet, you don't need port forwarding, you don't need to change any router settings.
 
 Next, you need an installation of the runtime (programming language) that the bot uses (e.g. [Python](https://www.python.org/downloads/), [rustup](https://www.rust-lang.org/tools/install), or [NodeJS](https://tecadmin.net/install-nodejs-with-nvm/)), if you don't have that already.
 Check out the documentation of the bot of your choice, you should find the information there.
