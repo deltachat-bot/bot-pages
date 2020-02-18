@@ -1,14 +1,21 @@
 ---
-title: Development information
+title: Developer information
 ---
 
-# Development information
+# Developer information
 
-To build your own Delta Chat bot is easy. Read on for some basic information and maybe have a look at our example bots. You may also copy and adapt them, if that suits you! They're mostly licensed under the GPL, which allows you to use the code, and also to change it as long as you re-publish your result (at least on request).
+Building your own Delta Chat bot is easy.
+Read on for some basic information and maybe have a look at our [example bots](howto.html#bots).
 
-Delta Chat bots use deltachat-core-rust, the engine doing most of the work. Your job as bot author is to use the output of that engine, and to give it instructions. You won't parse any email message, check connections, or care for encryption, that's all the engines job.
+### Background
 
-The core engine can be used natively, writing rust code. It also provides a [C-API](https://c.delta.chat) to enable its use from other languages. Besides C and C++ you currently can use the following languages, for which bindings to the core's API exist:
+Delta Chat bots use [deltachat-core-rust](https://github.com/deltachat/deltachat-core-rust), the engine doing most of the work.
+
+Your job as bot author is to use the output of that engine, and to give it instructions. You won't parse any email message, check connections, or care for encryption, that's all the engines job.
+
+The core engine can be used natively from rust, and through a [C-API](https://c.delta.chat) from C and C++.
+
+Additionally there are bindings to the C-API for the following languages:
 * Python: [https://py.delta.chat](https://py.delta.chat) (official)
 * NodeJS: [https://github.com/deltachat/deltachat-node](https://github.com/deltachat/deltachat-node) (official)
 * Golang: [https://github.com/hugot/go-deltachat](https://github.com/hugot/go-deltachat) (contributed)
