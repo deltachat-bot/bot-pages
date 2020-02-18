@@ -29,7 +29,7 @@ ul {
 }
 
 a {
-  color: darkblue;
+  color: #666;
 }
 
 footer {
@@ -89,4 +89,14 @@ header #site-name {
 header #delta-chat-logo {
   height: 5rem;
   width: 5rem;
+}
+
+.tip {
+  margin: 1rem 0 1rem 1rem;
+  color: grey;
+
+}
+.tip:before {
+  content: "👍  ";
+  font-size: 1.2rem;
 }
