@@ -16,6 +16,11 @@ jobs:
       run: |
         export PULLREQUEST_ID=$(jq .number < $GITHUB_EVENT_PATH)
         echo ::set-output name=prid::$PULLREQUEST_ID
+    - name: Generating error message
+      run: |
+        mkdir ${{ steps.getid.outputs.prid }}
+        # create empty file to copy it over the outdated deliverable on download.delta.chat
+        echo "This preview is outdated and has been removed." > ${{ steps.getid.outputs.prid }}/index.html
     - name: Replace build with error message
       uses: AEnterprise/rsync-deploy@v1.0
       env:
