@@ -3,8 +3,7 @@ name: Deploy Master Branch
 on:
   push:
     branches:
-      #- master
-      - github-action
+      - master
 
 jobs:
   build:

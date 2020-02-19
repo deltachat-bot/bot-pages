@@ -1,4 +1,4 @@
-# documentation: https://github.com/deltachat/sysadmin/tree/master/delta.chat
+# documentation: https://github.com/deltachat/sysadmin/tree/master/delta.chat#github-action-to-copy-it-to-correct-location
 name: Delete Preview Deliverables
 
 on: 
