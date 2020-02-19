@@ -23,7 +23,7 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         SERVER_PORT: 22
         FOLDER: ${{ steps.getid.outputs.prid }}
-        SERVER_IP: bots.delta.chat
-        SERVER_DESTINATION: /var/www/html/staging/
+        SERVER_IP: staging.bots.delta.chat
+        SERVER_DESTINATION: /var/www/html/bot-staging/
         ARGS: --delete -vhr
 
