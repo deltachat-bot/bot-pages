@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - new-deployment
+      - github-action
 
 jobs:
   build:
@@ -25,6 +25,6 @@ jobs:
         key: ${{ secrets.KEY }}
         host: "bots.delta.chat"
         port: 22
-        local: "_site"
-        remote: "/var/www/html/"
+        local: "_site/*"
+        remote: "/var/www/html/bot"
 
