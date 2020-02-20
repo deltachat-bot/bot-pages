@@ -8,7 +8,7 @@
 }
 
 body {
-  max-width: 60rem;
+  max-width: 50rem;
   padding: 2rem;
 }
 
@@ -62,14 +62,15 @@ nav a {
   font-weight: bold;
 }
 
-.main-wrapper {
-  display: flex;
-  margin-top: 2rem;
-  min-height: 20rem;
-}
-
-.main-wrapper main {
-  flex: 10;
+@media only screen and (min-width: 641px) {
+  .main-wrapper {
+    display: flex;
+    margin-top: 2rem;
+    min-height: 20rem;
+  }
+  .main-wrapper main {
+    flex: 10;
+  }
 }
 
 header {
@@ -99,4 +100,20 @@ header #delta-chat-logo {
 .tip:before {
   content: "👍  ";
   font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .intro-and-nav {
+    text-align: right;
+  }
+  nav {
+    padding-right: 0.5rem;
+    margin-top: -5rem;
+  }
+  header #site-name {
+    display: none;
+  }
+  .page-content {
+    min-width: 90%;
+  }
 }
