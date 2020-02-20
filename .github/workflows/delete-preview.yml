@@ -1,4 +1,4 @@
-# documentation: https://github.com/deltachat/sysadmin/tree/master/delta.chat
+# documentation: https://github.com/deltachat/sysadmin/tree/master/delta.chat#github-action-to-copy-it-to-correct-location
 name: Delete Preview Deliverables
 
 on: 
@@ -16,6 +16,11 @@ jobs:
       run: |
         export PULLREQUEST_ID=$(jq .number < $GITHUB_EVENT_PATH)
         echo ::set-output name=prid::$PULLREQUEST_ID
+    - name: Generating error message
+      run: |
+        mkdir ${{ steps.getid.outputs.prid }}
+        # create empty file to copy it over the outdated deliverable on download.delta.chat
+        echo "This preview is outdated and has been removed." > ${{ steps.getid.outputs.prid }}/index.html
     - name: Replace build with error message
       uses: AEnterprise/rsync-deploy@v1.0
       env:
@@ -23,7 +28,7 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         SERVER_PORT: 22
         FOLDER: ${{ steps.getid.outputs.prid }}
-        SERVER_IP: bots.delta.chat
-        SERVER_DESTINATION: /var/www/html/staging/
+        SERVER_IP: staging.bots.delta.chat
+        SERVER_DESTINATION: /var/www/html/bot-staging/
         ARGS: --delete -vhr
 
