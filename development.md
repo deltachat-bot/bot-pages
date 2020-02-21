@@ -25,5 +25,44 @@ If you language of choice misses here, please consider to write bindings to the 
 
 ### Background
 
-🚧 TODO: Describe the event-based nature of the core engine, name important core events. Exemplify one simple event-answer-roundtrip.
+The Delta Chat core engine manages all network connections and watches for activity.
+It also provides ways to interact with known data (e.g. reading messages) as well as to create new data (e.g. managing contacts, sending messages).
 
+Starting the Delta Chat core engine means to start threads that connect to your email server and work on jobs like watching for new messages, fetching messages, and sending messages.
+Any activity that the core engine considers worthwhile knowing is broadcasted through events.
+In order to stay on top of what's happening, your bot must listen for events it wants to handle.
+
+#### Events
+
+Here's a [list of all available events](https://c.delta.chat/group__DC__EVENT.html) with descriptions of their meaning.
+
+Most events carry a payload of one or two arguments, which contain the associated data. That might be an incoming message, but it might also be a number that signifies the progress of an operation.
+
+One useful example for an event and its payload would be [`DC_EVENT_INCOMING_MSG`](https://c.delta.chat/group__DC__EVENT.html#ga3f0831ca83189879a2f224b424d8b58f), the event emitted when a new message for an existing chat has arrived.
+Its payload are the ID of the chat for which the message arrived, and the ID of the message itself.
+If a payload argument is 0, an error happened. Errors are broadcasted through different events.
+To get hands on the actual chat and message, your code then will have to fetch it from the database by calling the API.
+
+In Python this might look like this (with a configured account and running threads):
+```python
+while 1:
+    event = account._evlogger.get_matching("DC_EVENT_INCOMING_MSG")
+    if event[2] != 0:
+        msg = account.get_message_by_id(event[2])
+        maybe_do_something(msg)
+```
+
+Messages that don't belong to an existing chat must be filtered from a different event: [`DC_EVENT_MSGS_CHANGED`](https://c.delta.chat/group__DC__EVENT.html#ga0f52cdaad70dd24f7540abda6193cc2d). The code must check that the message is put into the chat called "deaddrop", which is the bucket for all content messages that don't belong to an existing chat yet (e.g. if someone sends you an initial message).
+
+In Python:
+
+```python
+while 1:
+    event = account._evlogger.get_matching("DC_EVENT_MSGS_CHANGED")
+    if event[2] != 0:
+        msg = account.get_message_by_id(event[2])
+        if msg.chat().is_deaddrop()
+            do_something(msg)
+```
+
+See [the code of this python example bot](https://github.com/deltachat-bot/deltabot/blob/master/src/deltabot/cmdline.py#L110) for context code and how to maybe listen for both events at once.
