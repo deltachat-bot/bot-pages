@@ -1,9 +1,9 @@
 links:
   - title: Home
-    url: /
+    url: index.html 
   - title: Run a Bot
-    url: /howto.html
+    url: howto.html
   - title: Develop
-    url: /development.html
+    url: development.html
   - title: Contact
-    url: /contact.html
+    url: contact.html
