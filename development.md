@@ -68,10 +68,12 @@ while 1:
 See [the code of this python example bot](https://github.com/deltachat-bot/deltabot/blob/master/src/deltabot/cmdline.py#L110) for context code and how to maybe listen for both events at once.
 
 
-## Example
+## Examples
+
+#### NodeJS
 
 As an high level example here's an implementation of a simple echo bot in NodeJS.
-It uses a small library called [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base) that makes it even easier to build a bot.
+It uses a small library called [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base) that abstracts the bindings for NodeJS a little more and makes it even easier to build a bot.
 
 Install the dependency using NPM in a fresh directory:
 
