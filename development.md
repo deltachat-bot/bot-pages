@@ -61,7 +61,7 @@ while 1:
     event = account._evlogger.get_matching("DC_EVENT_MSGS_CHANGED")
     if event[2] != 0:
         msg = account.get_message_by_id(event[2])
-        if msg.chat().is_deaddrop()
+        if msg.chat().is_deaddrop():
             do_something(msg)
 ```
 
