@@ -32,6 +32,10 @@ a {
   color: #666;
 }
 
+a * {
+  color: #666;
+}
+
 footer {
   margin-top: 5rem;
   padding-top: 0.5rem;
@@ -99,4 +103,19 @@ header #delta-chat-logo {
 .tip:before {
   content: "👍  ";
   font-size: 1.2rem;
+}
+
+code, code * {
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+pre {
+  background: #eee;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+pre * {
+  background: #eee;
 }
