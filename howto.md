@@ -1,8 +1,8 @@
 ---
-title: How to run a Delta Chat Bot
+title: How to Run a Delta Chat Bot
 ---
 
-# How to run a Delta Chat Bot
+# How to Run a Delta Chat Bot
 
 To run a Delta Chat bot you don't need to be a programmer or experienced sysadmin.
 Basically any computer will do, as long as it can connect to your email provider.
