@@ -13,7 +13,7 @@ Delta Chat bots use [deltachat-core-rust](https://github.com/deltachat/deltachat
 
 Your job as bot author is to use the output of that engine, and to give it instructions. You won't parse any email message, check connections, or care for encryption, that's all the engines job.
 
-The core engine can be used natively from rust, and through a [C-API](https://c.delta.chat) from C and C++.
+The core engine can be used natively from rust, and through a [C-API](https://c.delta.chat) from C and C++. (Please note that the rust API is still subject to change, while the C-API is considered stable.)
 
 Additionally there are bindings to the C-API for the following languages:
 * Python: [https://py.delta.chat](https://py.delta.chat) (official)
