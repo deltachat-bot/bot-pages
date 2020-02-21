@@ -2,14 +2,14 @@
 title: Home
 ---
 
-# Delta Chat bots
+# Delta Chat Bots
 
 Welcome, human! 🤖
 
 These pages describe Delta Chat bots, show real life examples and give helpful information for developing your own bots.
 
 
-### What is it?
+### What Is It?
 
 Bots are Delta Chat's bridges into the rest of the world.
 
