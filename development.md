@@ -66,3 +66,47 @@ while 1:
 ```
 
 See [the code of this python example bot](https://github.com/deltachat-bot/deltabot/blob/master/src/deltabot/cmdline.py#L110) for context code and how to maybe listen for both events at once.
+
+
+## Example
+
+As an high level example here's an implementation of a simple echo bot in NodeJS.
+It uses a small library called [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base) that makes it even easier to build a bot.
+
+Install the dependency using NPM in a fresh directory:
+
+```bash
+npm install git://github.com/deltachat-bot/deltachat-node-bot-base
+```
+
+Configure the bot by writing its email-address and password into `config/local.json` like this:
+
+```json
+{
+  "email_address": "bot@example.net",
+  "email_password": "secretandsecure"
+}
+```
+
+Now put the following code into `./echobot.js` and run it with `node echobot`
+
+```javascript
+const { deltachat, log } = require('deltachat-node-bot-base')
+
+// Start the deltachat core engine and handle incoming messages.
+deltachat.start((chat, message) => {
+  const messageText = message.getText()
+  log(`Received a message for chat ${chat.getName()}: ${messageText}`)
+
+  if (deltachat.getChatContacts(chat.getid()).size === 1) {
+    // This is a 1-on-1 (aka "single") chat.
+    // Reply by quoting the same text.
+    deltachat.sendMessage(chat.getId(), `You said: ${messageText}`)
+  } else if (messageText.match(/^bot[:, ]+/i)) {
+    // Reply to a group chat only if the message started with "Bot".
+    const contact = deltachat.getContact(message.getFromId())
+    const displayName = contact.getDisplayName()
+    deltachat.sendMessage(chat.getId(), `${displayName} said: ${messageText}`)
+  }
+})
+```
