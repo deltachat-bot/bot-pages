@@ -70,9 +70,9 @@ See [the code of this python example bot](https://github.com/deltachat-bot/delta
 
 ## Examples
 
-#### NodeJS
+#### NodeJS echo bot
 
-As an high level example here's an implementation of a simple echo bot in NodeJS.
+As a very easy, high level example here's an implementation of a simple echo bot in NodeJS.
 It uses a small library called [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base) that abstracts the bindings for NodeJS a little more and makes it even easier to build a bot.
 
 Install the dependency using NPM in a fresh directory:
@@ -93,22 +93,37 @@ Configure the bot by writing its email-address and password into `config/local.j
 Now put the following code into `./echobot.js` and run it with `node echobot`
 
 ```javascript
+// Require deltachat from the bot-base library.
+// Also require the log() function as a simple helper to have our logged lines
+// appear the same as the logged lines from the library.
 const { deltachat, log } = require('deltachat-node-bot-base')
 
 // Start the deltachat core engine and handle incoming messages.
 deltachat.start((chat, message) => {
+  // Get the message from the API.
   const messageText = message.getText()
   log(`Received a message for chat ${chat.getName()}: ${messageText}`)
 
+  // Look at the number of contacts in the chat of this message. If we get
+  // exactly one contact, it is a 1-on-1 (aka "single") chat. (Technically, it
+  // might also be a group chat with only ourselves as member, but then we
+  // couldn't have received this message.)
   if (deltachat.getChatContacts(chat.getid()).size === 1) {
-    // This is a 1-on-1 (aka "single") chat.
-    // Reply by quoting the same text.
+    // We reply by repeating the same text with a prefix.
     deltachat.sendMessage(chat.getId(), `You said: ${messageText}`)
-  } else if (messageText.match(/^bot[:, ]+/i)) {
-    // Reply to a group chat only if the message started with "Bot".
-    const contact = deltachat.getContact(message.getFromId())
-    const displayName = contact.getDisplayName()
-    deltachat.sendMessage(chat.getId(), `${displayName} said: ${messageText}`)
+  } else {
+    // There are not chats with zero members. Thus, this appears to be a group chat.
+    // We reply only if the message starts with "Bot".
+    if (messageText.match(/^bot[:, ]+/i)) {
+      const contact = deltachat.getContact(message.getFromId())
+      const displayName = contact.getDisplayName()
+      deltachat.sendMessage(chat.getId(), `${displayName} said: ${messageText}`)
+    }
   }
 })
 ```
+
+#### NodeJS web publishing bot
+
+
+
