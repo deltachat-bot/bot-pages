@@ -9,24 +9,26 @@
   <body>
     <header class="site-header" role="banner">
       <img id='delta-chat-logo' src='/assets/logos/delta-chat.svg' alt='Delta Chat logo'>
-      <div id='site-name'>Delta Chat bots</div>
+      <div id='site-name'>Delta Chat Bots</div>
     </header>
 
     <div class="main-wrapper">
-      <nav>
-        <ul class='menu'>
-        {%- for item in site.data.menu.links -%}
-          <li> 
-          {% if item.url == page.url %}
-            {{ item.title }}
-          {% else %}
-            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-          {% endif %}
-          </li>
-        {% endfor %}
-        </ul>
+      <div class="intro-and-nav">
+        <nav>
+          <ul class='menu'>
+          {%- for item in site.data.menu.links -%}
+            <li> 
+            {% if item.url == page.url %}
+              {{ item.title }}
+            {% else %}
+              <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endif %}
+            </li>
+          {% endfor %}
+          </ul>
 
-      </nav>
+        </nav>
+      </div>
       <main class="page-content" aria-label="Content">
         {{ content }}
       </main>
