@@ -70,7 +70,7 @@ See [the code of this python example bot](https://github.com/deltachat-bot/delta
 
 ## Examples
 
-#### NodeJS echo bot
+### NodeJS echo bot
 
 As a very easy, high level example here's an implementation of a simple echo bot in NodeJS.
 It uses a small library called [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base) that abstracts the bindings for NodeJS a little more and makes it even easier to build a bot.
@@ -123,7 +123,7 @@ deltachat.start((chat, message) => {
 })
 ```
 
-#### NodeJS web publishing bot
+### NodeJS web publishing bot
 
 
 
