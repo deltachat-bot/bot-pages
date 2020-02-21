@@ -125,5 +125,6 @@ deltachat.start((chat, message) => {
 
 ### NodeJS web publishing bot
 
+Have a look at [public-groups-bot](https://github.com/deltachat-bot/public-groups-bot) and its underpinning library for web-interacting bots, [deltachat-node-webbot-base](https://github.com/deltachat-bot/deltachat-node-webbot-base).
 
-
+🚧 Describe these bots and their functionality more verbosely.
