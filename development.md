@@ -7,7 +7,7 @@ title: Developer information
 Building your own Delta Chat bot is easy.
 Read on for some basic information and maybe have a look at our [example bots](howto.html#bots).
 
-### Background
+### API
 
 Delta Chat bots use [deltachat-core-rust](https://github.com/deltachat/deltachat-core-rust), the engine doing most of the work.
 
@@ -21,6 +21,9 @@ Additionally there are bindings to the C-API for the following languages:
 * Golang: [https://github.com/hugot/go-deltachat](https://github.com/hugot/go-deltachat)
 
 If you language of choice misses here, please consider to write bindings to the API for it! Using FFI it shouldn't be too hard.
+
+
+### Background
 
 🚧 TODO: Describe the event-based nature of the core engine, name important core events. Exemplify one simple event-answer-roundtrip.
 
