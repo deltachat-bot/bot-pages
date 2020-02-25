@@ -108,7 +108,7 @@ deltachat.start((chat, message) => {
   // exactly one contact, it is a 1-on-1 (aka "single") chat. (Technically, it
   // might also be a group chat with only ourselves as member, but then we
   // couldn't have received this message.)
-  if (deltachat.getChatContacts(chat.getid()).size === 1) {
+  if (deltachat.getChatContacts(chat.getId()).length === 1) {
     // We reply by repeating the same text with a prefix.
     deltachat.sendMessage(chat.getId(), `You said: ${messageText}`)
   } else {
