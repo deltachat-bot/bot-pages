@@ -4,12 +4,26 @@
   line-height: 1.3em;
   font-family: sans;
   color: black;
-  background: white;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
-  max-width: 50rem;
   padding: 2rem;
+  background-image: linear-gradient( to bottom, #ffffff 0px, #ffffff 250px, #DD6600 2000px, #DD6600 100% );
+}
+
+.background {
+  max-width: 50rem;
+}
+
+.page-content {
+  padding: 1rem;
+  padding-top: 2rem;
+  background: white;
+/*  background-image: linear-gradient( to bottom, #ffeedd 0px, #ffeedd 20px, #fff 240px, #fff 100% ); */
 }
 
 h1, h2, h3, h4 {
