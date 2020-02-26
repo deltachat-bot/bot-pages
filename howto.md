@@ -33,5 +33,7 @@ If you don't use a container image you'll start the bot by executing a command. 
 
 ## Bots
 
-🚧 **TODO**: Links with short descriptions to example bots once they're ready.
+We started to collect runnable bots [in our forum](https://support.delta.chat/c/bots), have a look!
+
+The forum is also the right place to ask questions or request help in case of problems. Don't hesitate to post :)
 

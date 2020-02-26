@@ -4,7 +4,7 @@ title: Contact
 
 # Contact
 
-For general questions about Delta Chat and Delta Chat bots please use the [support forum](https://support.delta.chat/categories).
+For general questions about Delta Chat and Delta Chat bots please use the [support forum](https://support.delta.chat/c/bots/).
 
 To report bugs please open issues in the corresponding code repositories (e.g. [core + python bindings](https://github.com/deltachat/deltachat-core-rust), [nodejs-bindings](https://github.com/deltachat/deltachat-node)).
 
