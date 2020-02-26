@@ -21,5 +21,5 @@ A Delta Chat bot only needs a running computer and a network connection. That mi
 The bot doesn't even have to be connected all the time. It obviously can't read or send messages while offline, but it will resume doing so every time its connectivity is back.
 
 Read on:
-* [How to run a Delta Chat bot](howto.html)
-* [Developer information](development.html)
+* [How to run a Delta Chat bot]({{ site.baseurl }}howto.html)
+* [Developer information]({{ site.baseurl }}development.html)

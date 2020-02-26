@@ -5,7 +5,7 @@ title: Developer Information
 # Developer Information
 
 Building your own Delta Chat bot is easy.
-Read on for some basic information and maybe have a look at our [example bots](howto.html#bots).
+Read on for some basic information and maybe have a look at our [example bots]({{ site.baseurl }}howto.html#bots).
 
 ### API
 
