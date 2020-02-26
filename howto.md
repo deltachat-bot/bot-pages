@@ -31,9 +31,9 @@ Choose an email provider that doesn't filter, block or delay incoming or outgoin
 ### Running
 If you don't use a container image you'll start the bot by executing a command. In order to keep it running when you log out, maybe use a tool like [tmux](https://github.com/tmux/tmux/).
 
-## Questions?
+## Bots
 
-That's it! Good luck running your first own chat bot. If you have questions or
-run into problems, don't hesitate to ask [in the
-forum](https://support.delta.chat/c/bots/9).
+We started to collect runnable bots [in our forum](https://support.delta.chat/c/bots), have a look!
+
+The forum is also the right place to ask questions or request help in case of problems. Don't hesitate to post :)
 
