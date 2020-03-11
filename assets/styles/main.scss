@@ -32,3 +32,21 @@ $body-size: 20px;
 div.highlighter-rouge {
   padding-bottom: 1em;
 }
+
+@media only screen and (max-width: 770px) {
+  .deltachatbots-logo {
+    float: left;
+  }
+  .menu-list {
+    text-align: right;
+  }
+  .content h1 {
+    display: inline-block;
+  }
+  .menu-list a.is-active {
+    max-width: -moz-max-content;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
