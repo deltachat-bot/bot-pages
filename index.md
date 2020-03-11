@@ -4,9 +4,8 @@ title: Home
 
 # Delta Chat Bots
 
-Welcome, human! 🤖
-
 These pages describe Delta Chat bots, show real life examples and give helpful information for developing your own bots.
+{: .box }
 
 
 ### What Is It?

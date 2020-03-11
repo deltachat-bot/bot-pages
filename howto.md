@@ -7,6 +7,7 @@ title: How to Run a Delta Chat Bot
 To run a Delta Chat bot you don't need to be a programmer or experienced sysadmin.
 Basically any computer will do, as long as it can connect to your email provider.
 For testing purposes that may well be your local machine. :)
+{: .box }
 
 
 ### Requirements
@@ -25,8 +26,8 @@ Each Delta Chat bot requires at least one email address and a password — after
 
 There might be additional preparations steps described in the bot's documentation, please don't forget to read it.
 
-Choose an email provider that doesn't filter, block or delay incoming or outgoing emails. With good email providers, messages reach the chat partners within a few seconds, bad providers can cause long delays.
-{: .tip }
+**Tip**: Choose an email provider that doesn't filter, block or delay incoming or outgoing emails. With good email providers, messages reach the chat partners within a few seconds, bad providers can cause long delays.
+{: .notification }
 
 ### Running
 If you don't use a container image you'll start the bot by executing a command. In order to keep it running when you log out, maybe use a tool like [tmux](https://github.com/tmux/tmux/).

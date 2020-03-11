@@ -4,36 +4,39 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
-    <link rel="stylesheet" href="{{ "/assets/syntax.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/styles/main.css" | relative_url }}">
   </head>
   <body>
-    <header class="site-header" role="banner">
-      <img id='delta-chat-logo' src='{{ site.baseurl }}/assets/logos/delta-chat.svg' alt='Delta Chat logo'>
-      <div id='site-name'>Delta Chat Bots</div>
-    </header>
+    <section class="section">
+      <div class="container">
 
-    <div class="main-wrapper">
-      <div class="intro-and-nav">
-        <nav>
-          <ul class='menu'>
-          {%- for item in site.data.menu.links -%}
-            <li> 
-            {% if item.url == page.url %}
-              {{ item.title }}
-            {% else %}
-              <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-            {% endif %}
-            </li>
-          {% endfor %}
-          </ul>
+        <div class='columns'>
+          <aside class="menu column is-2">
+            <div class='deltachatbots-logo'>
+              <a href="{{ site.url }}">
+                <img style='width: 5rem; object-fit: contain; margin-bottom: 1rem' src='{{ site.baseurl }}/assets/logos/delta-chat.svg' alt='Delta Chat logo'>
+                🤖
+              </a>
+            </div>
+            <ul class='menu-list'>
+            {%- for item in site.data.menu.links -%}
+              <li> 
+                <a href="{{ item.url | relative_url }}"
+                {% if item.url == page.url %}
+                   class='is-active'
+                {% endif %}
+                >{{ item.title }}</a>
+              </li>
+            {% endfor %}
+            </ul>
+          </aside>
 
-        </nav>
+          <main class="content column" aria-label="Content">
+            {{ content }}
+          </main>
+        </div>
+
       </div>
-      <main class="page-content" aria-label="Content">
-        {{ content }}
-      </main>
-    </div>
-
+    </section>
   </body>
 </html>
