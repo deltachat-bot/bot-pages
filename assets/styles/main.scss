@@ -33,7 +33,7 @@ div.highlighter-rouge {
   padding-bottom: 1em;
 }
 
-@media only screen and (max-width: 770px) {
+@include mobile {
   .deltachatbots-logo {
     float: left;
   }
