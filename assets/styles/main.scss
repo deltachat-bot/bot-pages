@@ -28,3 +28,25 @@ $body-size: 20px;
   margin-bottom: 1rem;
 }
 
+//fix bottom padding of code blocks
+div.highlighter-rouge {
+  padding-bottom: 1em;
+}
+
+@include mobile {
+  .deltachatbots-logo {
+    float: left;
+  }
+  .menu-list {
+    text-align: right;
+  }
+  .content h1 {
+    display: inline-block;
+  }
+  .menu-list a.is-active {
+    max-width: -moz-max-content;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
