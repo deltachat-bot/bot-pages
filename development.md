@@ -8,7 +8,7 @@ Building your own Delta Chat bot is easy.
 Read on for some basic information and maybe have a look at our [example bots]({{ site.baseurl }}howto.html#bots).
 {: .box }
 
-### API
+## API
 
 Delta Chat bots use [deltachat-core-rust](https://github.com/deltachat/deltachat-core-rust), the engine doing most of the work.
 
@@ -16,15 +16,19 @@ Your job as bot author is to use the output of that engine, and to give it instr
 
 The core engine can be used natively from rust, and through a [C-API](https://c.delta.chat) from C and C++. (Please note that the rust API is still subject to change, while the C-API is considered stable.)
 
-Additionally there are bindings to the C-API for the following languages:
+For the following languages there are bindings to the C-API:
 * Python: [https://py.delta.chat](https://py.delta.chat)
 * NodeJS: [https://github.com/deltachat/deltachat-node](https://github.com/deltachat/deltachat-node)
 * Golang: [https://github.com/hugot/go-deltachat](https://github.com/hugot/go-deltachat)
 
-If you language of choice misses here, please consider to write bindings to the API for it! Using FFI it shouldn't be too hard.
+Additionally there are two small libraries for NodeJS that provide a higher level API to write bots:
+* [deltachat-node-bot-base](https://github.com/deltachat/deltachat-node-bot-base) — for writing bots (duh!),
+* [deltachat-node-webbot-base](https://github.com/deltachat/deltachat-node-bot-base) — for web-interacting bots (bases on the former).
+
+(If you language of choice misses here, please consider to write bindings to the API for it! Using FFI it shouldn't be too hard.)
 
 
-### Background
+## Background
 
 The Delta Chat core engine manages all network connections and watches for activity.
 It also provides ways to interact with known data (e.g. reading messages) as well as to create new data (e.g. managing contacts, sending messages).
@@ -69,58 +73,22 @@ while 1:
 **Note**: the Python bindings for Delta Chat provide convenient abstractions over these events. You don't have to write code like this for a real world bot, this is only shown to explain the background.
 {: .notification }
 
-## Examples
+## Code example
 
-### NodeJS echo bot
-
-As a very easy, high level example here's an implementation of a simple echo bot in NodeJS.
-It uses a small library called [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base) that abstracts the bindings for NodeJS a little more and makes it even easier to build a bot.
-
-Install the dependency using NPM in a fresh directory:
-
-```bash
-npm install git://github.com/deltachat-bot/deltachat-node-bot-base
-```
-
-Configure the bot by writing its email-address and password into `config/local.json` like this:
-
-```json
-{
-  "email_address": "bot@example.net",
-  "email_password": "secretandsecure"
-}
-```
-
-Now put the following code into `./echobot.js` and run it with `node echobot`
+To visualize how simple writing a Delta Chat bot can be, here's a stripped down implementation of an echo bot in NodeJS:
 
 ```javascript
-// Require deltachat from the bot-base library.
-// Also require the log() function as a simple helper to have our logged lines
-// appear the same as the logged lines from the library.
-const { deltachat, log } = require('deltachat-node-bot-base')
+const { deltachat } = require('deltachat-node-bot-base')
 
-// Start the deltachat core engine and handle incoming messages.
 deltachat.start((chat, message) => {
-  // Get the message from the API.
   const messageText = message.getText()
-  log(`Received a message for chat ${chat.getName()}: ${messageText}`)
-
-  if (chat.isSingle()) {
-    // In a 1-on-1 (aka "single") chat, we reply by repeating the same text with a prefix.
+  if (messageText && chat.isSingle()) {
     deltachat.sendMessage(chat.getId(), `You said: ${messageText}`)
-  } else {
-    // In a group chat, we reply only if the message starts with "Bot".
-    if (messageText.match(/^bot[:, ]+/i)) {
-      const contact = deltachat.getContact(message.getFromId())
-      const displayName = contact.getDisplayName()
-      deltachat.sendMessage(chat.getId(), `${displayName} said: ${messageText}`)
-    }
   }
 })
 ```
 
-### NodeJS web publishing bot
+This code is extracted from the README of the aforementioned library [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base). For more details and usage instructions see there.
 
-Have a look at [public-groups-bot](https://github.com/deltachat-bot/public-groups-bot) and its underpinning library for web-interacting bots, [deltachat-node-webbot-base](https://github.com/deltachat-bot/deltachat-node-webbot-base).
-
-🚧 Describe these bots and their functionality more verbosely.
+Real world bots are [showcased in the Delta Chat forum](https://support.delta.chat/c/bots). Go ahead and look at their source code, too!
+{: .notification }
