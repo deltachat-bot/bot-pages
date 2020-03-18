@@ -66,8 +66,8 @@ while 1:
             do_something(msg)
 ```
 
-See [the code of this python example bot](https://github.com/deltachat-bot/deltabot/blob/master/src/deltabot/cmdline.py#L110) for context code and how to maybe listen for both events at once.
-
+**Note**: the Python bindings for Delta Chat provide convenient abstractions over these events. You don't have to write code like this for a real world bot, this is only shown to explain the background.
+{: .notification }
 
 ## Examples
 
@@ -105,16 +105,11 @@ deltachat.start((chat, message) => {
   const messageText = message.getText()
   log(`Received a message for chat ${chat.getName()}: ${messageText}`)
 
-  // Look at the number of contacts in the chat of this message. If we get
-  // exactly one contact, it is a 1-on-1 (aka "single") chat. (Technically, it
-  // might also be a group chat with only ourselves as member, but then we
-  // couldn't have received this message.)
-  if (deltachat.getChatContacts(chat.getId()).length === 1) {
-    // We reply by repeating the same text with a prefix.
+  if (chat.isSingle()) {
+    // In a 1-on-1 (aka "single") chat, we reply by repeating the same text with a prefix.
     deltachat.sendMessage(chat.getId(), `You said: ${messageText}`)
   } else {
-    // There are not chats with zero members. Thus, this appears to be a group chat.
-    // We reply only if the message starts with "Bot".
+    // In a group chat, we reply only if the message starts with "Bot".
     if (messageText.match(/^bot[:, ]+/i)) {
       const contact = deltachat.getContact(message.getFromId())
       const displayName = contact.getDisplayName()
