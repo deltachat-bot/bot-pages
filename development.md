@@ -21,30 +21,34 @@ For the following languages there are bindings to the C-API:
 * NodeJS: [https://github.com/deltachat/deltachat-node](https://github.com/deltachat/deltachat-node)
 * Golang: [https://github.com/hugot/go-deltachat](https://github.com/hugot/go-deltachat)
 
-Additionally there are two small libraries for NodeJS that provide a higher level API to write bots:
+Additionally there are two small libraries for NodeJS. They provide a higher level API to write bots:
 * [deltachat-node-bot-base](https://github.com/deltachat/deltachat-node-bot-base) — for writing bots (duh!),
 * [deltachat-node-webbot-base](https://github.com/deltachat/deltachat-node-bot-base) — for web-interacting bots (bases on the former).
 
-(If you language of choice misses here, please consider to write bindings to the API for it! Using FFI it shouldn't be too hard.)
+(If you language of choice is missing here, please consider writing bindings to the API for it! Using FFI it shouldn't be too hard.)
 
 
 ## Background
 
 The Delta Chat core engine manages all network connections and watches for activity.
-It also provides ways to interact with known data (e.g. reading messages) as well as to create new data (e.g. managing contacts, sending messages).
+It provides ways to interact with known data (e.g. reading messages). You can also use it to create new data (e.g. managing contacts, sending messages).
 
-Starting the Delta Chat core engine means to start threads that connect to your email server and work on jobs like watching for new messages, fetching messages, and sending messages.
+Starting the Delta Chat core engine means to start threads that connect to your email server.
+Threads work on jobs (like watching for new messages, fetching messages, and sending messages).
+
 Any activity that the core engine considers worthwhile knowing is broadcasted through events.
-In order to stay on top of what's happening, your bot must listen for events it wants to handle.
+To stay on top of what's happening, your bot must listen for events it wants to handle.
 
-#### Events
+### Events
 
 Here's a [list of all available events](https://c.delta.chat/group__DC__EVENT.html) with descriptions of their meaning.
 
 Most events carry a payload of one or two arguments, which contain the associated data. That might be an incoming message, but it might also be a number that signifies the progress of an operation.
 
-One useful example for an event and its payload would be [`DC_EVENT_INCOMING_MSG`](https://c.delta.chat/group__DC__EVENT.html#ga3f0831ca83189879a2f224b424d8b58f), the event emitted when a new message for an existing chat has arrived.
+One useful example for an event and its payload would be [`DC_EVENT_INCOMING_MSG`](https://c.delta.chat/group__DC__EVENT.html#ga3f0831ca83189879a2f224b424d8b58f).
+A thread receives this event when a new message for an existing chat has arrived.
 Its payload are the ID of the chat for which the message arrived, and the ID of the message itself.
+
 If a payload argument is 0, an error happened. Errors are broadcasted through different events.
 To get hands on the actual chat and message, your code then will have to fetch it from the database by calling the API.
 
@@ -57,7 +61,7 @@ while 1:
         maybe_do_something(msg)
 ```
 
-Messages that don't belong to an existing chat must be filtered from a different event: [`DC_EVENT_MSGS_CHANGED`](https://c.delta.chat/group__DC__EVENT.html#ga0f52cdaad70dd24f7540abda6193cc2d). The code must check that the message is put into the chat called "deaddrop", which is the bucket for all content messages that don't belong to an existing chat yet (e.g. if someone sends you an initial message).
+Messages that don’t belong to an existing chat must be filtered from a different event: [`DC_EVENT_MSGS_CHANGED`](https://c.delta.chat/group__DC__EVENT.html#ga0f52cdaad70dd24f7540abda6193cc2d). The code must check that the message is put into the chat called “deaddrop”. You may now it from the app as "Contact Requests". The "deaddrop" is the bucket for all content messages which don’t belong to an existing chat yet (e.g. if someone sends you an initial message).
 
 In Python:
 
@@ -88,7 +92,7 @@ deltachat.start((chat, message) => {
 })
 ```
 
-This code is extracted from the README of the aforementioned library [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base). For more details and usage instructions see there.
+This code is coming from the README of the aforementioned library [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base). For more details and usage instructions, look there.
 
 Real world bots are [showcased in the Delta Chat forum](https://support.delta.chat/c/bots). Go ahead and look at their source code, too!
 {: .notification }

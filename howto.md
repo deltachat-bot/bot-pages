@@ -19,14 +19,16 @@ In general you need:
 * an installation of the programming language that the bot uses (e.g. Python or NodeJS),
 * and some additional software packages (don't be afraid, the installation won't be complicated).
 
-Some bots will have those dependencies packaged into a container image, then you need only the possibility to run a container (e.g. with docker or podman).
+Some bots will have those dependencies packaged into a container image. For
+those, you only need the possibility to run a container (e.g. with docker or
+podman).
 
 ### Configuration
 Each Delta Chat bot requires at least one email address and a password — after all a Delta Chat bot is basically just an special purpose email client.
 
-There might be additional preparations steps described in the bot's documentation, please don't forget to read it.
+There might be additional preparations steps described in the bot's documentation. Please don't forget to read it.
 
-**Tip**: Choose an email provider that doesn't filter, block or delay incoming or outgoing emails. With good email providers, messages reach the chat partners within a few seconds, bad providers can cause long delays.
+**Tip**: Choose an email provider that doesn't filter, block or delay incoming or outgoing emails. With good email providers, messages reach the chat partners within a few seconds. Bad providers can cause long delays.
 {: .notification }
 
 ### Running
