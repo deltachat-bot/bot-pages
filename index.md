@@ -24,7 +24,7 @@ Read on:
 * [Developer information]({{ site.baseurl }}development.html)
 
 Delta Chat Bot developments were partially funded through the [NGI0 NLNET PET](https://nlnet.nl/PET) Fund, with financial support from the
-European Commission's [Next Generation Internet](https://ngi.eu/) programme.**
+European Commission's [Next Generation Internet](https://ngi.eu/) programme.
 {: .notification }
 
 <img src="{{ "/assets/logos/banner.png" | relative_url }}" alt="Logo NLnet: abstract logo of four people seen from above" style="margin: 0 2% 0 2%; max-width: 120px"/>
