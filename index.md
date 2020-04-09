@@ -31,5 +31,5 @@ grant agreement No 825310. **Applications are still open, you can [apply
 today](https://nlnet.nl/propose).**_
 {: .box }
 
-<img src="/assets/logos/banner.png" alt="Logo NLnet: abstract logo of four people seen from above" style="margin: 0 2% 0 2%; max-width: 120px"/>
-<img src="/assets/logos/NGI0_tag.png" alt="Logo NGI Zero: letterlogo shaped like a tag" style="margin: 0 2% 0 2%; max-width: 120px"/>
+<img src="{{ "/assets/logos/banner.png" | relative_url }}" alt="Logo NLnet: abstract logo of four people seen from above" style="margin: 0 2% 0 2%; max-width: 120px"/>
+<img src="{{ "/assets/logos/NGI0_tag.png" | relative_url }}" alt="Logo NGI Zero: letterlogo shaped like a tag" style="margin: 0 2% 0 2%; max-width: 120px"/>
