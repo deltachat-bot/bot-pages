@@ -22,3 +22,10 @@ The bot doesn't even have to be connected all the time. It obviously can't read 
 Read on:
 * [How to run a Delta Chat bot]({{ site.baseurl }}howto.html)
 * [Developer information]({{ site.baseurl }}development.html)
+
+Delta Chat Bot developments were partially funded through the [NGI0 NLNET PET](https://nlnet.nl/PET) Fund, with financial support from the
+European Commission's [Next Generation Internet](https://ngi.eu/) programme.**
+{: .notification }
+
+<img src="{{ "/assets/logos/banner.png" | relative_url }}" alt="Logo NLnet: abstract logo of four people seen from above" style="margin: 0 2% 0 2%; max-width: 120px"/>
+<img src="{{ "/assets/logos/NGI0_tag.png" | relative_url }}" alt="Logo NGI Zero: letterlogo shaped like a tag" style="margin: 0 2% 0 2%; max-width: 120px"/>
