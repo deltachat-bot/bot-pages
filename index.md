@@ -23,13 +23,13 @@ Read on:
 * [How to run a Delta Chat bot]({{ site.baseurl }}howto.html)
 * [Developer information]({{ site.baseurl }}development.html)
 
-_This project was funded through the [NGI0 PET](https://nlnet.nl/PET) Fund, a
+This project was funded through the [NGI0 PET](https://nlnet.nl/PET) Fund, a
 fund established by [NLnet](https://nlnet) with financial support from the
 European Commission's [Next Generation Internet](https://ngi.eu/) programme,
 under the aegis of DG Communications Networks, Content and Technology under
 grant agreement No 825310. **Applications are still open, you can [apply
-today](https://nlnet.nl/propose).**_
-{: .box }
+today](https://nlnet.nl/propose).**
+{: .notification }
 
 <img src="{{ "/assets/logos/banner.png" | relative_url }}" alt="Logo NLnet: abstract logo of four people seen from above" style="margin: 0 2% 0 2%; max-width: 120px"/>
 <img src="{{ "/assets/logos/NGI0_tag.png" | relative_url }}" alt="Logo NGI Zero: letterlogo shaped like a tag" style="margin: 0 2% 0 2%; max-width: 120px"/>
