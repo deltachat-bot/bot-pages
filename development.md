@@ -22,8 +22,8 @@ For the following languages there are bindings to the C-API:
 * Golang: [https://github.com/hugot/go-deltachat](https://github.com/hugot/go-deltachat)
 
 Additionally there are two small libraries for NodeJS that provide a higher level API to write bots:
-* [deltachat-node-bot-base](https://github.com/deltachat/deltachat-node-bot-base) — for writing bots (duh!),
-* [deltachat-node-webbot-base](https://github.com/deltachat/deltachat-node-bot-base) — for web-interacting bots (bases on the former).
+* [deltachat-node-bot-base](https://github.com/deltachat-bot/deltachat-node-bot-base) — for writing bots (duh!),
+* [deltachat-node-webbot-base](https://github.com/deltachat-bot/deltachat-node-webbot-base) — for web-interacting bots (bases on the former).
 
 (If you language of choice misses here, please consider to write bindings to the API for it! Using FFI it shouldn't be too hard.)
 
