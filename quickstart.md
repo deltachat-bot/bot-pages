@@ -62,7 +62,7 @@ while True:
     fresh = ac.get_fresh_messages()
     for message in fresh:
         print(message.text)
-        message.chat.mark_noticed()
+    ac.mark_seen_messages(fresh)
 ```
 
 **Tip:** You can look at the [python
@@ -71,10 +71,9 @@ else you can do with a deltachat.Message object.
 {: .notification }
 
 If we use `ac.get_fresh_messages()` to fetch new messages, we need to mark the
-chat as noticed afterwards, so we don't re-fetch it every time (Actually, this
-way some messages can get lost, if new messages come before we processed the
-last one). So this generally works, but it is a bit primitive. You can also use
-event hooks:
+messages as seen afterwards, so we don't re-fetch it every time.
+
+This generally works, but it is a bit primitive. You can also use event hooks:
 
 ### Optional: Use Hooks to Catch Events
 
@@ -105,7 +104,7 @@ class EchoPlugin:
         print("ac_incoming_message", message.text)
 ```
 
-Here we don't need to mark the chat as notified, `ac_incoming_message` does
+Here we don't need to mark the messages as notified, `ac_incoming_message` does
 that for us.
 
 **Tip:** You can find a full list of available hooks in
@@ -156,7 +155,7 @@ while True:
         if not message.is_system_message() and not message.chat.is_group():
             text = message.text
             message.chat.send_text(text)
-        message.chat.mark_noticed()
+    ac.mark_seen_messages(fresh)
 ```
 
 Or if you want to use a hook function:
