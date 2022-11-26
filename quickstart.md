@@ -2,7 +2,7 @@
 title: Write a Bot
 ---
 
-# Quick Start
+# Write a Bot
 
 For a start, let's build an "echo" bot in python. For every message you send to it, it will reply with that same text.
 You can look at this [example repository](https://github.com/deltachat-bot/echo) for solutions in different programming languages!
