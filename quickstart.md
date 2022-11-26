@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Write a Bot
 ---
 
 # Quick Start
