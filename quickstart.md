@@ -68,7 +68,7 @@ while True:
 **Tip:** You can look at the [python
 docs](https://py.delta.chat/api.html#deltachat.message.Message) to see what
 else you can do with a deltachat.Message object.
-{: .box }
+{: .notification }
 
 If we use `ac.get_fresh_messages()` to fetch new messages, we need to mark the
 chat as noticed afterwards, so we don't re-fetch it every time (Actually, this
@@ -111,7 +111,7 @@ that for us.
 **Tip:** You can find a full list of available hooks in
 [hookspec.py](https://github.com/deltachat/deltachat-core-rust/blob/master/python/src/deltachat/hookspec.py)
 in the python bindings.
-{: .box }
+{: .notification }
 
 But now, without a while loop, the bot just quits after `run_account()` - how
 can we keep it running?
