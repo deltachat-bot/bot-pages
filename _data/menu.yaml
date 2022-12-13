@@ -3,7 +3,9 @@ links:
     url: /
   - title: Run a Bot
     url: /howto.html
-  - title: Develop
+  - title: Write a Bot
+    url: /quickstart.html
+  - title: API
     url: /development.html
   - title: Example Bots
     url: https://support.delta.chat/c/bots/
