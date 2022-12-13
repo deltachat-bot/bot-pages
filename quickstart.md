@@ -73,7 +73,8 @@ else you can do with a deltachat.Message object.
 If we use `ac.get_fresh_messages()` to fetch new messages, we need to mark the
 messages as seen afterwards, so we don't re-fetch it every time.
 
-This generally works, but it is a bit primitive. You can also use event hooks:
+This generally works, but the loop constantly eats 100% CPU. Usually we rather
+go for an event-driven approach:
 
 ### Optional: Use Hooks to Catch Events
 
