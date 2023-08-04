@@ -21,9 +21,7 @@ For the following languages there are bindings to the C-API:
 * NodeJS: [https://github.com/deltachat/deltachat-node](https://github.com/deltachat/deltachat-node)
 * Golang: [https://github.com/hugot/go-deltachat](https://github.com/hugot/go-deltachat)
 
-Additionally there are two small libraries for NodeJS that provide a higher level API to write bots:
-* [deltachat-node-bot-base](https://github.com/deltachat-bot/deltachat-node-bot-base) — for writing bots (duh!),
-* [deltachat-node-webbot-base](https://github.com/deltachat-bot/deltachat-node-webbot-base) — for web-interacting bots (bases on the former).
+If you need a starting point for your bot look at the [echo bot](https://github.com/deltachat-bot/echo), which has examples for getting started in multiple languages. (C, go, nodejs, python, rust)
 
 (If you language of choice misses here, please consider to write bindings to the API for it! Using FFI it shouldn't be too hard.)
 
@@ -73,22 +71,6 @@ while 1:
 **Note**: the Python bindings for Delta Chat provide convenient abstractions over these events. You don't have to write code like this for a real world bot, this is only shown to explain the background.
 {: .notification }
 
-## Code example
-
-To visualize how simple writing a Delta Chat bot can be, here's a stripped down implementation of an echo bot in NodeJS:
-
-```javascript
-const { deltachat } = require('deltachat-node-bot-base')
-
-deltachat.start((chat, message) => {
-  const messageText = message.getText()
-  if (messageText && chat.isSingle()) {
-    deltachat.sendMessage(chat.getId(), `You said: ${messageText}`)
-  }
-})
-```
-
-This code is extracted from the README of the aforementioned library [`deltachat-node-bot-base`](https://github.com/deltachat-bot/deltachat-node-bot-base). For more details and usage instructions see there.
 
 Real world bots are [showcased in the Delta Chat forum](https://support.delta.chat/c/bots). Go ahead and look at their source code, too!
 {: .notification }
