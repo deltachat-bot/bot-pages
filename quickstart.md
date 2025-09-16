@@ -82,7 +82,8 @@ with the same text as the incoming message.
 
 We use `bot.rpc.send_msg(accid, msg.chat_id, reply)` to send the
 reply message to the same chat where the incoming message was
-received.
+received. The `bot.rpc` object allows you to interact with the
+[chatmail core API](https://github.com/chatmail/core/blob/main/deltachat-jsonrpc/src/api.rs).
 
 ## Starting the CLI
 
