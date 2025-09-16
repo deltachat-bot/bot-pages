@@ -10,7 +10,7 @@ You can look at this [example repository](https://github.com/deltachat-bot/echo)
 
 ## Setup virtual environment
 
-First lets setup a Python virtual environment where we can safely
+First let's setup a Python virtual environment where we can safely
 install and test the dependencies we need:
 
 ```sh
@@ -44,7 +44,7 @@ from deltachat2 import MsgData, events
 
 ## Setting up the bot CLI
 
-Now lets setup the bot's command line interface:
+Now let's setup the bot's command line interface:
 
 ```python
 cli = BotCli("echobot")
@@ -124,7 +124,7 @@ Now it is time to test our new bot program!
 
 ### Configure
 
-First lets create the bot's chatmail profile:
+First let's create the bot's chatmail profile:
 
 ```sh
 python ./echobot.py init DCACCOUNT:https://nine.testrun.org/new
