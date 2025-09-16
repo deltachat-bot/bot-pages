@@ -8,182 +8,179 @@ For a start, let's build an "echo" bot in python. For every message you send to 
 You can look at this [example repository](https://github.com/deltachat-bot/echo) for solutions in different programming languages!
 {: .box }
 
-To install the `deltachat` python package, see the [deltachat python
-documentation](https://py.delta.chat/install.html). You can import it like
-this:
+## Setup virtual environment
 
-```python
-import deltachat
+First lets setup a Python virtual environment where we can safely
+install and test the dependencies we need:
+
+```sh
+pip install virtualenv
+virtualenv .venv
+source .venv/bin/activate
 ```
 
-## Setting up an Account Object
+## Installing dependencies
 
-A Delta Chat usually starts with an account object, the account your bot will
-use to communicate with others. It is initialized with a path to the database
-where it will store its data. Make sure that path exists:
+Now that we have a virtual environment active for testing, let's
+install the dependencies we need to create our bot:
 
-```python
-import deltachat
-
-ac = deltachat.account.Account("/tmp/bot_db/")
+```sh
+pip install deltabot-cli
 ```
 
-Now, to login to the email account, the bot needs its own email address + a
-password. With most servers, this will be enough to get started (some servers
-might require [additional configuration](https://providers.delta.chat)). Let's
-get username + password from environment variables, configure, and run the
-account:
+**NOTE:** `deltabot-cli` is a high-level bot framework library
+that simplifies writing bots and speeds the development process.
+
+## Creating a Python script file
+
+Now create a file called `echobot.py` where you will put the code
+of your bot. The first thing we will put inside is the import of
+the dependencies we will be using:
 
 ```python
-import deltachat
-import os
-
-os.getenv("DELTACHAT_DB_PATH", default="/tmp/bot_db/")
-ac = deltachat.account.Account(db_path)
-
-addr = os.getenv("DELTACHAT_BOT_ADDR")
-password = os.getenv("DELTACHAT_BOT_PASSWORD")
-
-ac.run_account(addr=addr, password=password)
+from deltabot_cli import BotCli
+from deltachat2 import MsgData, events
 ```
 
-[`account.run_account()`](https://py.delta.chat/api.html#deltachat.account.Account.run_account)
-will run the account, and configure it if necessary (e.g. look up the mail
-servers of your provider).
+## Setting up the bot CLI
 
-## Receiving Messages
-
-Now we can listen for incoming messages, and directly reply to them!
+Now lets setup the bot's command line interface:
 
 ```python
-ac.run_account(addr=addr, password=password)
-
-while True:
-    fresh = ac.get_fresh_messages()
-    for message in fresh:
-        print(message.text)
-    ac.mark_seen_messages(fresh)
+cli = BotCli("echobot")
 ```
 
-**Tip:** You can look at the [python
-docs](https://py.delta.chat/api.html#deltachat.message.Message) to see what
-else you can do with a deltachat.Message object.
-{: .notification }
+This creates a `cli` object that will use `echobot` as default
+folder name for the bot configuration folder
+(ex. `~/.config/echobot/` on Linux).
 
-If we use `ac.get_fresh_messages()` to fetch new messages, we need to mark the
-messages as seen afterwards, so we don't re-fetch it every time.
+## Handling incoming messages
 
-This generally works, but the loop constantly eats 100% CPU. Usually we rather
-go for an event-driven approach:
-
-### Optional: Use Hooks to Catch Events
-
-New messages are just one of the different events which the core emits. Often
-we want to listen for other events. We can use hooks for this.
-
-The account object has an event thread running; if an event happens, it will
-call a hook. You can override this hook in an account plugin with your own
-function to let a bot react to something, e.g. a message.
-
-An account plugin is just a class, which we add to the account object:
+With the `cli` object we can now register event handlers:
 
 ```python
-class EchoPlugin:
-    pass
-
-ac.add_account_plugin(EchoPlugin)
+@cli.on(events.NewMessage)
+def echo(bot, accid, event):
+    msg = event.msg
+    reply = MsgData(text=msg.text)
+    bot.rpc.send_msg(accid, msg.chat_id, reply)
 ```
 
-Now this in itself is not very useful yet. But we can override the
-`ac_incoming_message` method, which gets called on every incoming message
-(duh). Then we can hook into incoming messages in the plugin:
+The line `@cli.on(events.NewMessage)` means the following function
+will be called when a new message is received. The function
+receives the bot instance, the account ID where the message was
+received and the event object offering `event.command` and
+`event.payload`, strings with the command issued by the user and
+the command's payload, for example if the user sent a message with
+text: `/uppercase hello`, then `event.command == "/uppercase"` and
+`event.payload == "hello"`. For our echo bot we don't need any
+commands and we can access the incoming message object directly
+via `event.msg`.
+
+With `reply = MsgData(text=msg.text)` we create a reply object
+with the same text as the incoming message.
+
+We use `bot.rpc.send_msg(accid, msg.chat_id, reply)` to send the
+reply message to the same chat where the incoming message was
+received.
+
+## Starting the CLI
+
+When our `echobot.py` script is run we need to start the bot's CLI
+so events are processed:
 
 ```python
-class EchoPlugin:
-    @deltachat.account_hookimpl
-    def ac_incoming_message(self, message):
-        print("ac_incoming_message", message.text)
+if __name__ == "__main__":
+    cli.start()
 ```
 
-Here we don't need to mark the messages as notified, `ac_incoming_message` does
-that for us.
+This powers our bot with a fully featured CLI with options to
+configure and run our bot!
 
-**Tip:** You can find a full list of available hooks in
-[hookspec.py](https://github.com/deltachat/deltachat-core-rust/blob/master/python/src/deltachat/hookspec.py)
-in the python bindings.
-{: .notification }
+## Full source code
 
-But now, without a while loop, the bot just quits after `run_account()` - how
-can we keep it running?
-
-[`account.wait_shutdown()`](https://py.delta.chat/api.html#deltachat.account.Account.wait_shutdown)
-waits until the account quits running for some reason. This is necessary here
-so the script stays open as long as the bot is running, instead of quiting
-directly. We want the bot to reply to our messages forever, after all. So in
-total:
+That is it! We have a fully functional echo-bot, here is the
+complete source code of our `echobot.py` script:
 
 ```python
-class EchoPlugin:
-    @deltachat.account_hookimpl
-    def ac_incoming_message(self, message):
-        print("ac_incoming_message", message.text)
+from deltabot_cli import BotCli
+from deltachat2 import MsgData, events
 
-ac.add_account_plugin(EchoPlugin)
-ac.run_account(addr=addr, password=password)
-ac.wait_shutdown()
+cli = BotCli("echobot")
+
+@cli.on(events.NewMessage)
+def echo(bot, accid, event):
+    msg = event.msg
+    reply = MsgData(text=msg.text)
+    bot.rpc.send_msg(accid, msg.chat_id, reply)
+
+if __name__ == "__main__":
+    cli.start()
 ```
 
-## Sending a Message
+## Testing the bot
 
-Now we can react to the incoming message, by replying with an exact echo of the
-message. If you used the while loop, it looks like this:
+Now it is time to test our new bot program!
 
-```python
-import deltachat
-import os
+### Configure
 
-os.getenv("DELTACHAT_DB_PATH", default="/tmp/bot_db/")
-ac = deltachat.account.Account(db_path)
+First lets create the bot's chatmail profile:
 
-addr = os.getenv("DELTACHAT_BOT_ADDR")
-password = os.getenv("DELTACHAT_BOT_PASSWORD")
-
-ac.run_account(addr=addr, password=password)
-
-while True:
-    fresh = ac.get_fresh_messages()
-    for message in fresh:
-        if not message.is_system_message() and not message.chat.is_group():
-            text = message.text
-            message.chat.send_text(text)
-    ac.mark_seen_messages(fresh)
+```sh
+python ./echobot.py init DCACCOUNT:https://nine.testrun.org/new
 ```
 
-Or if you want to use a hook function:
+**TIP:** We will be using nine.testrun.org chatmail relay,
+you can register a new account in many other existing
+[chatmail relays](https://chatmail.at/relays)
 
-```python
-import deltachat
-import os
+After the profile is created we can tweak the bot's display name,
+avatar and the status/description message:
 
-class EchoPlugin:
-    @deltachat.account_hookimpl
-    def ac_incoming_message(self, message):
-        if not message.is_system_message() and not message.chat.is_group():
-            text = message.text
-            message.chat.send_text(text)
-
-
-os.getenv("DELTACHAT_DB_PATH", default="/tmp/bot_db/")
-ac = deltachat.account.Account(db_path)
-
-addr = os.getenv("DELTACHAT_BOT_ADDR")
-password = os.getenv("DELTACHAT_BOT_PASSWORD")
-
-ac.add_account_plugin(EchoPlugin)
-ac.run_account(addr=addr, password=password)
-ac.wait_shutdown()
+```sh
+python ./echobot.py config displayname "My Echo Bot"
+python ./echobot.py config selfstatus "Hi, I am an echo-bot"
+python ./echobot.py config selfavatar "./bot-avatar.png"
 ```
 
-Voilà! Now you know the most important concepts of the deltachat core and can
-start developing your own bots.
+### Get the bot's chat invitation link
 
+To get in contact with the bot we need to get the bot's invite link:
+
+```sh
+python ./echobot.py link
+```
+
+The bot's invite link will be printed in the shell, open it with
+your Delta Chat client or in the browser and scan the QR code.
+The chat invitation will be accepted by the bot once you let the
+bot process incoming messages, keep reading to the next step.
+
+### Run the bot
+
+Finally the time has come to start chatting with your bot!
+We instruct the bot to go online and process messages using
+the command:
+
+```sh
+python ./echobot.py serve
+```
+
+Now go to your Delta Chat, you should already have a chat with
+the bot, try sending "hi" or any other text message to it!
+
+### Next steps
+
+Congratulations! you got the basics of creating and running a
+Delta Chat bot!
+
+Further readings:
+
+* [deltabot-cli page](https://github.com/deltachat-bot/deltabot-cli-py)
+* [deltachat2 library used by deltabot-cli](https://github.com/adbenitez/deltachat2)
+* [echo-bot implementation examples in different languages](https://github.com/deltachat-bot/echo)
+
+**NOTE:** `deltabot-cli` and `deltachat2` libraries are in
+development and proper documentation is missing, for now you will
+have to read their provided examples and their source code.
+For a list of the available JSON-RPC methods [click here](https://github.com/chatmail/core/blob/main/deltachat-jsonrpc/src/api.rs)
