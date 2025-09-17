@@ -22,14 +22,12 @@ source .venv/bin/activate
 ## Installing dependencies
 
 Now that we have a virtual environment active for testing, let's
-install the dependencies we need to create our bot:
+install `deltabot-cli`, a high-level bot framework library that
+simplifies writing bots and will speed up the development:
 
 ```sh
 pip install deltabot-cli
 ```
-
-**NOTE:** `deltabot-cli` is a high-level bot framework library
-that simplifies writing bots and speeds the development process.
 
 ## Creating a Python script file
 
