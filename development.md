@@ -14,7 +14,8 @@ Delta Chat bots use [chatmail core](https://github.com/chatmail/core), the engin
 
 Your job as bot author is to use the output of that engine, and to give it instructions. You won't parse any email message, check connections, or care for encryption, that's all the engines job.
 
-The core engine can be used natively from Rust, through a [JSON-RPC API](https://jsonrpc.delta.chat/) from many other languages. There is also a [C-API](https://c.delta.chat) that can be used from C and C++. (Please note that the Rust and JSON-RPC API are still subject to change, while the C-API is considered stable.)
+The core engine can be used natively from Rust and through a [JSON-RPC API](https://jsonrpc.delta.chat/) from any other language.
+(Please note that the API is still subject to change)
 
 If you need a starting point for your bot look at the [echo bot](https://github.com/deltachat-bot/echo), which has examples for getting started in multiple languages.
 
