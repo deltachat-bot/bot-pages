@@ -66,14 +66,22 @@ def echo(bot, accid, event):
 
 The line `@cli.on(events.NewMessage)` means the following function
 will be called when a new message is received. The function
-receives the bot instance, the account ID where the message was
-received and the event object offering `event.command` and
-`event.payload`, strings with the command issued by the user and
-the command's payload, for example if the user sent a message with
-text: `/uppercase hello`, then `event.command == "/uppercase"` and
-`event.payload == "hello"`. For our echo bot we don't need any
-commands and we can access the incoming message object directly
-via `event.msg`.
+receives these parameters:
+- `bot`: the bot instance,
+- `accid`: the account ID where the message was received
+  (this would be relevant for a bot that uses multiple accounts)
+- `event`: the event object. Since we're listening to NewMessage,
+  `event` offers information about the received message:
+  - `event.msg` is an object describing the received message 
+  - `event.command` and `event.payload` are
+    strings with the command issued by the user and
+    the command's payload. For example, if the user sent a message with
+    text: `/uppercase hello`, then `event.command == "/uppercase"` and
+    `event.payload == "hello"`.
+
+  For our echo bot we don't need any commands,
+  so we access the incoming message object directly
+  via `event.msg`.
 
 With `reply = MsgData(text=msg.text)` we create a reply object
 with the same text as the incoming message.
