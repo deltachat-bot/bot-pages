@@ -186,6 +186,9 @@ Further readings:
 * [deltabot-cli page](https://github.com/deltachat-bot/deltabot-cli-py)
 * [deltachat2 library used by deltabot-cli](https://github.com/adbenitez/deltachat2)
 * [echo-bot implementation examples in different languages](https://github.com/deltachat-bot/echo)
+* [Rendered TypeScript documentation](https://js.jsonrpc.delta.chat/classes/RawClient.html)
+  (There is no auto-rendered documentation for the Python API,
+  but the TypeScript API is very similar to the functions that can be called on `event.rpc`)
 
 **NOTE:** `deltabot-cli` and `deltachat2` libraries are in
 development and proper documentation is missing, for now you will
