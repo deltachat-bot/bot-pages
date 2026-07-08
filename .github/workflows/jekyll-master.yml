@@ -16,7 +16,7 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/jekyll:latest /bin/bash -c "chmod 777 /srv/jekyll -R && jekyll build --future"
+        jekyll/jekyll:4.4.1 /bin/bash -c "chmod 777 /srv/jekyll -R && jekyll build --future"
     - name: Upload
       run: |
         mkdir -p "$HOME/.ssh"
