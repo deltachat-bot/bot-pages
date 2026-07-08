@@ -4,8 +4,9 @@ on: [pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    environment:
+      name: "staging"
 
     steps:
     - uses: actions/checkout@v1
